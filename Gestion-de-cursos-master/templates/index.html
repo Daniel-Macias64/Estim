@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %} 
+
+{% block filecss %}
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+{% endblock %}
+    
+{% block content %}
+<h1 class="title">Estim</h1>
+    <div class="row">
+		
+		<div class="container col-lg-6 col-md-offset-3">
+            {% if alumnos %}
+			<table class="listar table table-striped table-bordered">
+				<thead>
+					<tr>
+						<td>Nombre del Juego</td>
+						<td>Plataforma</td>
+						
+					</tr>
+				</thead>
+				<tbody>
+					{% for alumno in alumnos %}
+					<tr>
+						<td>{{alumno.id_enrollment__id_student__names}}</td>
+						<td>{{alumno.id_enrollment__id_student__surnames}}</td>
+                    
+					</tr>
+					{% endfor %}
+				</tbody>
+            </table>
+
+            
+            {% else %}
+                <div>
+                    <h1>No existen registros de alumnos</h1>
+                </div>
+            {% endif %}
+        </div> 
+    </div>    
+{% endblock%}
+
+{% block filejs %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src ="{% static 'js/index.js' %}"></script>
+{% endblock %}
+

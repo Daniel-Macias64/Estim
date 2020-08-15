@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block filecss %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/course.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="content_course">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endblock %}
